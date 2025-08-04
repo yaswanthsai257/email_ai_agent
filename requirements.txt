@@ -1,0 +1,12 @@
+# requirements.txt
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+python-dotenv
+google-api-python-client
+google-auth-oauthlib
+python-jose[cryptography]
+groq
+langchain          # Core LangChain library
+langchain_groq     # Specific integration for Grok

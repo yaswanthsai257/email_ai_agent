@@ -1,0 +1,7 @@
+# Environment variables - NEVER commit this file
+.env
+
+# Python artifacts
+__pycache__/
+venv/
+*.pyc
