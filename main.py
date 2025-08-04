@@ -17,11 +17,19 @@ from supabase import create_client, Client
 from ai_service import get_summary_from_grok
 
 # --- Configuration & Setup ---
-load_dotenv() # This line loads the variables from your .env file
+load_dotenv()
 app = FastAPI()
 
+# --- MODIFICATION FOR DEPLOYMENT ---
+# Get URLs from environment variables, with localhost as a fallback for local dev
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:8080")
+BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
+REDIRECT_URI = f"{BACKEND_URL}/auth/google/callback"
+
 # Add CORS Middleware
-origins = [ "http://localhost:8080", ]
+origins = [
+    FRONTEND_URL, # Use the variable here
+]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -36,12 +44,10 @@ key: str = os.environ.get("SUPABASE_SERVICE_KEY")
 if not url or not key: raise ValueError("Supabase URL or Service Key not set.")
 supabase: Client = create_client(url, key)
 
-# Securely loading credentials from environment variables
-FRONTEND_URL = "http://localhost:8080"
+# Other Configs
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
 GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
-REDIRECT_URI = "http://127.0.0.1:8000/auth/google/callback"
 SCOPES = ["openid", "https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/gmail.readonly"]
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7
