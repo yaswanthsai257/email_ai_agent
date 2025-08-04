@@ -24,7 +24,7 @@ app = FastAPI()
 # Get URLs from environment variables, with localhost as a fallback for local dev
 # The default is now your live Vercel URL
 FRONTEND_URL = os.getenv("FRONTEND_URL", "https://email-agent-ai.vercel.app") 
-BACKEND_URL = os.getenv("BACKEND_URL", "https://email-ai-agent-2.onrender.com")
+BACKEND_URL = os.getenv("BACKEND_URL", "https://email-ai-agent-8.onrender.com")
 REDIRECT_URI = f"{BACKEND_URL}/auth/google/callback"
 
 # Add CORS Middleware
