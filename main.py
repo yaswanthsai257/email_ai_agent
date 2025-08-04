@@ -23,7 +23,7 @@ app = FastAPI()
 # --- MODIFICATION FOR DEPLOYMENT ---
 # Get URLs from environment variables, with localhost as a fallback for local dev
 # The default is now your live Vercel URL
-FRONTEND_URL = os.getenv("FRONTEND_URL", "https://email-digest-vue.vercel.app") 
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://email-agent-ai.vercel.app") 
 BACKEND_URL = os.getenv("BACKEND_URL", "https://email-ai-agent-2.onrender.com")
 REDIRECT_URI = f"{BACKEND_URL}/auth/google/callback"
 
