@@ -11,3 +11,4 @@ python-jose[cryptography]
 groq
 langchain          # Core LangChain library
 langchain_groq     # Specific integration for Grok
+supabase
